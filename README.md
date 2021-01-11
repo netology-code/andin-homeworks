@@ -10,28 +10,30 @@
 
 ## Блок 2: Работа с многопоточностью
 
-2.1 [x] Примитивы синхронизации и специализированные структуры данных (дз не предусмотрено) 
+2.1 [x] [Примитивы синхронизации и специализированные структуры данных](04_sync)
 
-2.2 [ ] [Современные подходы работы с многопоточностью](06_current)
+2.2 [ ] [Современные подходы работы с многопоточностью](05_current)
 
-2.3 [ ] [Многопоточность в Android](07_android)
+2.3 [ ] [Многопоточность в Android](06_android)
 
-2.4 [ ] [Retrofit (CRUD)](08_crud)
+2.4 [ ] [Retrofit (CRUD)](07_crud)
 
 ## Блок 3: Coroutines
 
-3.1 [ ] [Coroutines: легковесные потоки, Thread Pools & Dispatchers](09_coroutines)
+3.1 [ ] [Coroutines: легковесные потоки, Thread Pools & Dispatchers](08_coroutines)
 
-3.2 [ ] [Coroutines: Scopes, Cancellation, Supervision](10_supervision)
+3.2 [ ] [Coroutines: Scopes, Cancellation, Supervision](09_supervision)
 
-3.3 [ ] [Coroutines в Android, MainScope](11_mainscope)
+3.3 [ ] [Coroutines в Android, MainScope](10_mainscope)
 
-3.4 [ ] [Flow](12_flow)
+3.4 [ ] [Flow](11_flow)
 
 ## Блок 4: Продвинутые вопросы интеграции с серверной частью
 
-4.1 [ ] [Загрузка и отображение изображений](13_images)
+4.1 [ ] [Загрузка и отображение изображений](12_images)
 
-4.2 [ ] [Регистрация, аутентификация и авторизация](14_auth)
+4.2 [ ] [Регистрация, аутентификация и авторизация](13_auth)
 
 4.3 [ ] [Рассылка и приём Push-уведомлений](14_pushes)
+
+4.4 [ ] [Фоновые сервисы (для взаимодействия по HTTP)](15_services)
