@@ -18,7 +18,7 @@
 
 ### Легенда
 
-Возьмите [проект с лекции](https://github.com/netology-code/andin-code/tree/master/05_current) и мигрируйте всю функциональность с использования функции `thread` на `enqueue` из `OkHttp`.
+Возьмите [проект сервера с лекции](https://github.com/netology-code/andin-code/tree/master/05_current) и мигрируйте всю функциональность с использования функции `thread` на `enqueue` из `OkHttp`.
 
 <details>
 <summary>Документация на OkHttp в части запросов и потоков</summary>
