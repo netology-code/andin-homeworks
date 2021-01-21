@@ -18,7 +18,7 @@
 
 2.3 [x] [Многопоточность в Android](06_android)
 
-2.4 [ ] [Retrofit (CRUD)](07_crud)
+2.4 [x] [Retrofit (CRUD)](07_crud)
 
 ## Блок 3: Coroutines
 

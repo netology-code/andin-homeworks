@@ -1,0 +1,10 @@
+### Получение списка сообщений
+
+GET http://localhost:9999/api/slow/posts
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+});
+%}
