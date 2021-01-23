@@ -22,7 +22,7 @@
 
 ## Блок 3: Coroutines
 
-3.1 [ ] [Coroutines: легковесные потоки, Thread Pools & Dispatchers](08_coroutines)
+3.1 [x] [Coroutines: легковесные потоки, Thread Pools & Dispatchers](08_coroutines)
 
 3.2 [ ] [Coroutines: Scopes, Cancellation, Supervision](09_supervision)
 

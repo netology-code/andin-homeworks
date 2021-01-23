@@ -1,0 +1,167 @@
+### Получение списка сообщений
+
+GET http://localhost:9999/api/posts
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+});
+%}
+
+### Создание нового сообщения (id = 0)
+
+POST http://localhost:9999/api/posts
+Content-Type: application/json
+
+{
+  "id": 0,
+  "author": "Netology",
+  "authorAvatar": "netology.jpg",
+  "content": "New Post",
+  "published": 0,
+  "likedByMe": false,
+  "likes": 0,
+  "attachment": {
+    "url": "netology.jpg",
+    "type": "IMAGE",
+    "description": "podcast.jpg"
+  }
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+  client.assert(response.body.id === 6, "Generated id not 6");
+});
+%}
+
+### Получение сообщения по id
+
+GET http://localhost:9999/api/posts/6
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+  client.assert(response.body.id === 6, "id not 6");
+  client.assert(response.body.content === "New Post", "Invalid content");
+});
+%}
+
+### Обновление сообщения (id != 0)
+
+POST http://localhost:9999/api/posts
+Content-Type: application/json
+
+{
+  "id": 6,
+  "author": "Netology",
+  "authorAvatar": "netology.jpg",
+  "content": "New Post (UPDATED)",
+  "published": 0,
+  "likedByMe": false,
+  "likes": 0
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+  client.assert(response.body.id === 6, "Id changed");
+  client.assert(response.body.content === "New Post (UPDATED)", "Content not updated");
+});
+%}
+
+### Like сообщения
+
+POST http://localhost:9999/api/posts/6/likes
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Получение сообщения по id
+
+GET http://localhost:9999/api/posts/6
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+  client.assert(response.body.id === 6, "id not 6");
+  client.assert(response.body.likes === 1, "likes not incremented");
+  client.assert(response.body.likedByMe === true, "likedByMe didn't changed");
+});
+%}
+
+
+### Дизлайк сообщения
+
+DELETE http://localhost:9999/api/posts/6/likes
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Получение сообщения по id
+
+GET http://localhost:9999/api/posts/6
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+  client.assert(response.body.id === 6, "id not 6");
+  client.assert(response.body.likes === 0, "likes decremented");
+  client.assert(response.body.likedByMe === false, "likedByMe didn't changed");
+});
+%}
+
+### Удаление сообщения по id
+
+DELETE http://localhost:9999/api/posts/6
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Получение несуществующего сообщения
+
+GET http://localhost:9999/api/posts/6
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 404, "Response status is not 404");
+});
+%}
+
+### Получение аватарки
+
+GET http://localhost:9999/avatars/sber.jpg
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === 'image/jpeg', "Invalid mime type");
+});
+%}
+
+### Получение изображения
+
+GET http://localhost:9999/images/sbercard.jpg
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === 'image/jpeg', "Invalid mime type");
+});
+%}
+
