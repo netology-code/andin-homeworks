@@ -24,7 +24,7 @@
 
 3.1 [x] [Coroutines: легковесные потоки, Thread Pools & Dispatchers](08_coroutines)
 
-3.2 [ ] [Coroutines: Scopes, Cancellation, Supervision](09_supervision)
+3.2 [x] [Coroutines: Scopes, Cancellation, Supervision](09_supervision)
 
 3.3 [ ] [Coroutines в Android, MainScope](10_mainscope)
 
