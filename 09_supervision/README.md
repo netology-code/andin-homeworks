@@ -140,7 +140,7 @@ fun main() {
 fun main() {
     CoroutineScope(EmptyCoroutineContext).launch {
         try {
-            supervisionScope {
+            supervisorScope {
                 launch {
                     delay(500)
                     throw Exception("something bad happened") // <--
