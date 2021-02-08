@@ -26,7 +26,7 @@
 
 3.2 [x] [Coroutines: Scopes, Cancellation, Supervision](09_supervision)
 
-3.3 [ ] [Coroutines в Android, MainScope](10_mainscope)
+3.3 [x] [Coroutines в Android](10_mainscope)
 
 3.4 [ ] [Flow](11_flow)
 
