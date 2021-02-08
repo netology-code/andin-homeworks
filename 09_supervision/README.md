@@ -96,7 +96,7 @@ fun main() {
 fun main() {
     CoroutineScope(EmptyCoroutineContext).launch {
         try {
-            supervisionScope {
+            supervisorScope {
                 throw Exception("something bad happened")
             }
         } catch (e: Exception) {
