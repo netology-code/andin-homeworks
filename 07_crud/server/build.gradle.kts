@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.3.5.RELEASE"
+    id("org.springframework.boot") version "2.4.5"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
     id("org.jetbrains.kotlin.plugin.jpa") version "1.4.20-RC"
     kotlin("jvm") version "1.4.10"
