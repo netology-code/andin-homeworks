@@ -126,8 +126,8 @@ login=noname&pass=secret&name=NoName
 
 ```kotlin
 @FormUrlEncoded
-@POST("users/authentication")
-suspend fun updateUser(@Field("login") login: String, @Field("pass") pass: String): Response<ваш_тип>
+@POST("users/registration")
+suspend fun registerUser(@Field("login") login: String, @Field("pass") pass: String, @Field("name") name: String): Response<ваш_тип>
 ```
 
 </details>
