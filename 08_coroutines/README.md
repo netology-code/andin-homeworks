@@ -1,4 +1,4 @@
-# Домашнее задание к занятию «8. Coroutines: легковесные потоки, Thread Pools & Dispatchers»
+# Домашнее задание к занятию «9. Coroutines: легковесные потоки, Thread Pools & Dispatchers»
 
 Выполненное задание прикрепите ссылкой на ваши GitHub-проекты в личном кабинете студента на сайте [netology.ru](https://netology.ru).
 
