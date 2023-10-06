@@ -1,7 +1,11 @@
 package ru.netology.nmedia.entity
 
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 import ru.netology.nmedia.dto.Comment
-import javax.persistence.*
 
 @Entity
 data class CommentEntity(
