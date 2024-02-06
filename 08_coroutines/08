@@ -1,0 +1,24 @@
+import io.ktor.client.*
+import io.ktor.client.request.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
+
+data class PostWithAuthor(
+    val post: Post,
+    val author: Author
+)
+
+fun main() = runBlocking {
+    val client = HttpClient()
+    val posts = client.get<List<Post>>("http://your-server.com/api/posts")
+    val postsWithAuthors = posts.map { post ->
+        async {
+            val author = client.get<Author>("http://your-server.com/api/authors/${post.authorId}")
+            PostWithAuthor(post, author)
+        }
+    }.awaitAll()
+
+    postsWithAuthors.forEach { println(it) }
+
+    client.close()
+}
