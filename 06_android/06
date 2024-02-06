@@ -1,0 +1,14 @@
+1
+
+import com.bumptech.glide.Glide
+
+Glide.with(this)
+    .load("http://server.com/avatars/${name}")
+    .into(imageView)
+
+2
+
+Glide.with(this)
+    .load("http://server.com/avatars/${name}")
+    .circleCrop()
+    .into(imageView)
