@@ -1,0 +1,23 @@
+class MyBroadcastReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        val recipientId = intent.getStringExtra("recipientId")
+        val appAuthId = AppAuth.getUser()?.id.toString()
+
+        when (recipientId) {
+            appAuthId -> {
+
+            }
+            "0" -> {
+                if (recipientId != appAuthId) {
+                }
+            }
+            else -> {
+                if (recipientId != appAuthId) {
+                }
+            }
+            null -> {
+
+            }
+        }
+    }
+}
