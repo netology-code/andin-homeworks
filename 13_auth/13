@@ -1,0 +1,65 @@
+1
+
+
+class LoginViewModel : ViewModel() {
+    private val repository = UserRepository()
+
+    fun authenticateUser(login: String, password: String) {
+        repository.authenticateUser(login, password)
+    }
+}
+
+
+class UserRepository {
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("http://localhost:9999/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    private val service = retrofit.create(UserService::class.java)
+
+    fun authenticateUser(login: String, password: String) {
+        val call = service.authenticateUser(login, password)
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    val user = response.body()
+                    AppAuth.saveUser(user)
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                // Обработка ошибки
+            }
+        })
+    }
+}
+
+
+interface UserService {
+    @FormUrlEncoded
+    @POST("api/users/authentication")
+    fun authenticateUser(
+        @Field("login") login: String,
+        @Field("pass") password: String
+    ): Call<User>
+}
+
+
+data class User(
+    val id: Int,
+    val token: String
+)
+
+
+object AppAuth {
+    private var user: User? = null
+
+    fun saveUser(user: User?) {
+        this.user = user
+    }
+
+    fun getUser(): User? {
+        return user
+    }
+}
