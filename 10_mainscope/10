@@ -1,0 +1,31 @@
+fun likeById(id: Long) {
+    viewModelScope.launch {
+        try {
+            repository.likeById(id)
+        } catch (e: Exception) {
+        }
+    }
+}
+
+fun removeById(id: Long) {
+    viewModelScope.launch {
+        try {
+            repository.removeById(id)
+        } catch (e: Exception) {
+        }
+    }
+}
+
+
+override suspend fun removeById(id: Long) {
+    dao.removeById(id)
+    api.removeById(id)
+}
+
+override suspend fun likeById(id: Long) {
+
+    val post = dao.getById(id)
+    dao.save(post.copy(liked = !post.liked))
+
+    api.likeById(id)
+}
