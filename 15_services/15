@@ -1,0 +1,76 @@
+Save
+
+class PostRepository {
+    private val postDao = AppDatabase.getInstance().postDao()
+    private val postWorkDao = AppDatabase.getInstance().postWorkDao()
+
+    suspend fun savePost(postWorkEntity: PostWorkEntity): Result<Post> {
+        val postWork = postWorkDao.getById(postWorkEntity.id)
+        if (postWork == null) {
+            return Result.failure(Exception("PostWorkEntity с id ${postWorkEntity.id} не найден"))
+        }
+
+        val post = Post(
+            id = postWork.id,
+            content = postWork.content,
+            attachment = postWork.attachment
+
+        )
+
+        val response = service.savePost(post)
+        if (response.isSuccessful) {
+            val savedPost = response.body()
+            if (savedPost != null) {
+                postDao.insert(savedPost)
+                postWorkDao.delete(postWork)
+                return Result.success(savedPost)
+            }
+        }
+
+        return Result.failure(Exception("Не удалось сохранить пост"))
+    }
+}
+
+
+
+Remove
+
+
+class DeletePostWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
+    override fun doWork(): Result {
+        val postId = inputData.getLong("postId", 0)
+        if (postId == 0L) {
+            return Result.failure()
+        }
+
+        val repository = PostRepository()
+        return when (repository.deletePost(postId)) {
+            true -> Result.success()
+            false -> Result.failure()
+        }
+    }
+}
+
+
+class PostRepository {
+    private val postDao = AppDatabase.getInstance().postDao()
+
+    suspend fun deletePost(postId: Long): Boolean {
+        val post = postDao.getById(postId)
+        if (post != null) {
+            postDao.delete(post)
+            return true
+        }
+        return false
+    }
+}
+
+
+fun deletePost(context: Context, postId: Long) {
+    val workManager = WorkManager.getInstance(context)
+    val inputData = workDataOf("postId" to postId)
+    val deletePostRequest = OneTimeWorkRequestBuilder<DeletePostWorker>()
+        .setInputData(inputData)
+        .build()
+    workManager.enqueue(deletePostRequest)
+}
