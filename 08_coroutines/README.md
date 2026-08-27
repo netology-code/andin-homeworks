@@ -55,7 +55,7 @@ data class Author(
 
 Теперь в постах и комментариях нет ни имени автора, ни аватарки.
 
-Сервер с реализацией находится в каталоге [server](server).
+Сервер с реализацией находится в каталоге [server](https://github.com/netology-code/andin-homeworks/tree/master/08_coroutines/server).
 
 Чтобы автор отображался, нужно делать запрос на `/api/authors/{id}`, где `{id}` — это идентификатор автора. Никакого `getAll` для авторов нет.
 
