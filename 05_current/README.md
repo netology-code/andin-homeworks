@@ -23,7 +23,7 @@
 <details>
 <summary>Документация на OkHttp в части запросов и потоков</summary>
 
-[Ссылка](https://square.github.io/okhttp/calls/)
+[Ссылка](https://lysine.dev/okhttp/features/calls/)
 
 #### Calls
 
