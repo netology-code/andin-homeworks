@@ -41,7 +41,7 @@ login=student&pass=secret
 
 Где `id` — идентификатор пользователя с логином `student` и паролем `secret`, а `token` — это и есть токен.
 
-Как отправлять формы формата `form-encoded` (`application/x-www-form-urlencoded`), смотрите в [документации на Retrofit](https://square.github.io/retrofit/).
+Как отправлять формы формата `form-encoded` (`application/x-www-form-urlencoded`), смотрите в [документации на Retrofit](https://lysine.dev/retrofit/).
 
 <details>
 <summary>Если не нашли, как отправлять форму:</summary>
